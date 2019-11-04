@@ -8,7 +8,8 @@
 	<link rel="stylesheet" media="all" href="css/style.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,13 +33,46 @@
 			}
 
 		/* Add some shadows to create a card effect */
-		.card {
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		.card:hover {
+			-webkit-box-shadow: -7px 7px 19px -2px rgba(0,0,0,0.53);
+			-moz-box-shadow: -7px 7px 19px -2px rgba(0,0,0,0.53);
+			box-shadow: -7px 7px 19px -2px rgba(0,0,0,0.53);
+		}
+		.card{
+			margin-bottom: 10px;
+			margin-top: 8%;
+			margin-left: 8%;
 		}
 
 		/* Some left and right padding inside the container */
 		.container {
 			padding: 0 16px;
+		}
+
+		.overlay {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: rgba(81, 119, 199, 0.575);
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			transition: .75s ease;
+		}
+		.ctr {
+			position: absolute;
+			transform: translate(-50%,-50%);
+			text-align: center;
+			padding: 30%;
+            
+		}
+
+		 .rounded-circle {
+			margin-top: 20px;
+		}
+
+		.imghov:hover .overlay{
+			opacity: 1;
 		}
 
 		/* Clear floats */
@@ -47,6 +81,7 @@
 			clear: both;
 			display: table;
 		}
+
 
 		.title {
 			color: grey;
@@ -68,11 +103,13 @@
 			background-color: #555;
 		}
 
+
 	</style>
 </head>
 <body>
 
 	<!-- header -->
+	
 	<header id="header">
 		<div class="container-fluid">
 			<!-- navigation -->
@@ -100,14 +137,15 @@
 
 	<div class="divider"></div>
 
+	<section id="main">
 	<div class="container">
 		<div class="row-lg-12">
 			<h2 class="my-4">Our Team</h2>
 		</div>
 		<div class="row">
-			<div class="col-lg-4" style="margin-bottom: 20px;">
+			<div class="col-lg-4" data-toggle="modal" data-target="#m1" style="margin-bottom: 20px;">
 				<div class="card">
-					<img src="images/team/MukeshSahu.png" alt="Mr. Mukesh Sahu" style="width:100%">
+					<img src="images/team/MukeshSahu.png" alt="Mr. Mukesh Sahu" id="card-img-top" style="width:100%">
 					<div class="container">
 						<h2>Mr. Mukesh Sahu</h2>
 						<p class="title">Branch Counsellor IEEE GTBIT</p>
@@ -123,66 +161,91 @@
 					</div>
 
 				</div>
+
 			</div>
+
 			<div class="col-lg-4" style="text-align: center">
-				<div class="row-lg-12" style="margin: 0 auto;">
-					<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/JashanPreetSingh.jpg" alt="Jashan Preet Singh">
-					<h3>Jashan Preet Singh
-						<small>Chairperson</small>
-					</h3>
-					<div class="row" style="padding: 0 15px">
-						<p  style="text-align: center; width: 100%; ">
-							<a href="https://www.facebook.com/jashankhalsa" target="_blank" class="btn btn-fb"><i class="fab fa-facebook"></i></a>
-							<a href="https://twitter.com/jashankhalsa" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
-							<a href="https://www.linkedin.com/in/singhjp006/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
-						</p>
-					</div> <br />
-				</div>
-				<div class="row-lg-12" style="width: 70%; margin: 0 auto;">
-					<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/AbhayChawla.jpg" alt="Abhay Chawla">
-					<h3>Abhay Chawla <br />
-						<small>Vice Chair</small>
-					</h3>
-					<div class="row" style="padding: 0 15px">
-						<p  style="text-align: center; width: 100%; ">
-							<a href="https://www.facebook.com/abhaychawla97" target="_blank" class="btn btn-fb"><i class="fab fa-facebook"></i></a>
-							<a href="https://twitter.com/abhaychawla97" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
-							<a href="https://www.linkedin.com/in/abhaychawla/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
-						</p>
-					</div> <br />
+				<div class="card" data-toggle="modal" data-target="#m2" style="margin-bottom: 20px;">
+					<div class="row-lg-4 imghov" style="margin: 0 auto;">
+						<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/JashanPreetSingh.jpg" alt="Jashan Preet Singh">
+						
+							<h3>Jashan Preet Singh
+								<small>Chairperson</small>
+							</h3>
+							<div class="row" style="padding: 0 15px">
+								<p  style="text-align: center; width: 100%; ">
+									<a href="https://www.facebook.com/jashankhalsa" target="_blank" class="btn btn-fb"><i class="fab fa-facebook"></i></a>
+									<a href="https://twitter.com/jashankhalsa" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
+									<a href="https://www.linkedin.com/in/singhjp006/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
+								</p>
+							</div> 
+							<br />
+					</div>
+			</div>
+	
+				<div class="card" data-toggle="modal" data-target="#m3" style="margin-bottom: 20px;">
+					<div class="row-lg-4 imghov" style="margin: 0 auto;">
+						<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/AbhayChawla.jpg" alt="Abhay Chawla">
+					
+							<h3>Abhay Chawla <br />
+							<small>Vice Chair</small>
+						</h3>
+							<div class="row" style="padding: 0 15px">
+								<p  style="text-align: center; width: 100%; ">
+								<a href="https://www.facebook.com/abhaychawla97" target="_blank" class="btn btn-fb"><i class="fab fa-facebook"></i></a>
+								<a href="https://twitter.com/abhaychawla97" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
+								<a href="https://www.linkedin.com/in/abhaychawla/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
+							</p>
+							</div> 
+							<br />
+					</div>
 				</div>
 			</div>
+			
 			<div class="col-lg-4" style="text-align: center">
-				<div class="row-lg-12" style="margin: 0 auto;">
-					<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/JivjyotSingh.jpg" alt="">
-					<h3>Jivjyot Singh <br />
-						<small>Vice Chair</small>
-					</h3>
-					<div class="row" style="padding: 0 15px">
-						<p  style="text-align: center; width: 100%; ">
-							<a href="https://www.facebook.com/jivjyot.singh" target="_blank" class="btn btn-fb"><i class="fab fa-facebook"></i></a>
-							<a href="https://twitter.com/jivjyot_singh" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
-							<a href="https://www.linkedin.com/in/jivjyot-singh-6b4663b6/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
-						</p>
-					</div> <br />
+				<div class="card" data-toggle="modal" data-target="#m4" style="margin-bottom: 20px;">
+					<div class="row-lg-4" style="margin: 0 auto;">
+						<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/JivjyotSingh.jpg" alt="">
+						<div class="overlay ctr"><i class="far fa-arrow-alt-circle-right" style="color: white; font-size: 70px;"></i></div>
+							<h3>Jivjyot Singh <br />
+							<small>Vice Chair</small>
+							</h3>
+						<div class="row" style="padding: 0 15px">
+							<p  style="text-align: center; width: 100%; ">
+								<a href="https://www.facebook.com/jivjyot.singh" target="_blank" class="btn btn-fb"><i class="fab fa-facebook"></i></a>
+								<a href="https://twitter.com/jivjyot_singh" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
+								<a href="https://www.linkedin.com/in/jivjyot-singh-6b4663b6/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
+							</p>
+						</div> 
+					<br/>
+					</div>	
 				</div>
-				<div class="row-lg-12" style="width: 70%; margin: 0 auto;">
-					<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/SahilGahlawat.JPG" alt="">
-					<h3>Sahil Gahlawat <br />
-						<small>General Secretary</small>
-					</h3>
-					<div class="row" style="padding: 0 15px">
-						<p  style="text-align: center; width: 100%; ">
-							<a href="https://www.facebook.com/saga.2029" target="_blank" class="btn btn-fb"><i class="fab fa-facebook"></i></a>
-							<a href="https://twitter.com/wisdomandwhisky" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
-							<a href="https://www.linkedin.com/in/sahil-g-948b3b133/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
+			
+
+				<div class="card" data-toggle="modal" data-target="#m5" style="margin-bottom: 20px;">
+					<div class="row-lg-4" style="margin: 0 auto;">
+						<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/SahilGahlawat.JPG" alt="">
+							<h3>Sahil Gahlawat <br />
+							<small>General Secretary</small>
+							</h3>
+						<div class="row" style="padding: 0 15px">
+							<p  style="text-align: center; width: 100%; ">
+								<a href="https://www.facebook.com/saga.2029" target="_blank" class="btn btn-fb"><i class="fab fa-facebook"></i></a>
+								<a href="https://twitter.com/wisdomandwhisky" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
+								<a href="https://www.linkedin.com/in/sahil-g-948b3b133/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 						</div>
-					</div> <br />
+					</div> 
+					<br />
 				</div>
 			</div>
-		</div>
+
+		</div> 
+		<!--row-->
+		
+		
 		<div class="row" style="margin-top: 40px">
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m6" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/ReshuSingh.jpg" alt="">
 				<h3>Reshu Singh <br />
 					<small>WIE Chair</small>
@@ -194,8 +257,10 @@
 						<a href="https://www.linkedin.com/in/reshusinghhh/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
 				</div> <br />
+				</div>
 			</div>
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m7" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/AmishaRawat.jpeg" alt="Amisha Rawat">
 				<h3>Amisha Rawat <br />
 					<small>WIE Vice Chair</small>
@@ -206,9 +271,11 @@
 						<a href="https://twitter.com/miniamisha" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
 						<a href="https://www.linkedin.com/in/miniamisha/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
-				</div> <br />				
+				</div> <br />	
+				</div>			
 			</div>
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m8" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/PriyanshuSingh.jpg" alt="Priyanshu Singh">
 				<h3>Priyanshu <br />
 					<small>WIE Vice Chair</small>
@@ -220,10 +287,18 @@
 						<a href="https://www.linkedin.com/in/priyanshu-64354082" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
 				</div> <br />
+				</div>
 			</div>
-		</div>
+		
+
+
+
+		</div> 
+		<!--row-->
+
 		<div class="row" style="margin-top: 40px">
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m9" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/GauravRawal.jpg" alt="Gaurav Rawal">
 				<h3>Gaurav Rawal <br />
 					<small>Web Club Head</small>
@@ -235,8 +310,10 @@
 						<a href="https://linkedin.com/in/iamgrawal" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
 				</div> <br />
+				</div>
 			</div>
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m10" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/VinayakTiwari.jpg" alt="Vinayak Tiwari">
 				<h3>Vinayak Tiwari <br />
 					<small>Electronics and Electrical Head</small>
@@ -248,8 +325,10 @@
 						<a href="https://www.linkedin.com/in/vinayak-tiwari-3ab777145" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
 				</div> <br />
+				</div>
 			</div>
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m11" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/JaskiratKaur.jpg" alt="Jaskirat Kaur">
 				<h3>Jaskirat Kaur Sodhi<br />
 					<small>Programming Club Head</small>
@@ -260,11 +339,16 @@
 						<a href="https://twitter.com" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
 						<a href="https://www.linkedin.com/in/jaskirat-kaur-60a625145" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
-				</div> <br />				
+				</div> <br />
+				</div>				
 			</div>
 		</div>
+		<!--row-->
+
+
 		<div class="row" style="margin-top: 40px">
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m12" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/ManinderSingh.jpg" alt="">
 				<h3>Maninder Singh <br />
 					<small>Web Club Co-Head</small>
@@ -275,9 +359,12 @@
 						<a href="https://twitter.com/Maninde39383395" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
 						<a href="https://www.linkedin.com/in/maninder-singh-69a684164" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
-				</div> <br />
+				</div> 
+			</div> 
+				<br />
 			</div>
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m13" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/Tejas.jpeg" alt="Tejas Srivastava">
 				<h3>Tejas Srivastava<br />
 					<small>Electronics and Electrical Co-Head</small>
@@ -288,9 +375,12 @@
 						<a href="https://mobile.twitter.com/Vinayak2897" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
 						<a href="https://www.linkedin.com/in/vinayak-tiwari-3ab777145" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
-				</div> <br />
+				</div> 
+				</div>
+				<br />
 			</div>
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m14" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/GurprasadSingh.jpg" alt="Gurprasad Singh">
 				<h3>Gurprasad Singh <br />
 					<small>Programming Club Co-Head</small>
@@ -301,11 +391,16 @@
 						<a href="https://twitter.com/Gurprasad8" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
 						<a href="https://www.linkedin.com/in/gurprasad-singh-773001130" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
-				</div> <br />					
+				</div> 
+			</div>
+				<br />					
 			</div>
 		</div>
+		<!--row-->
+
 		<div class="row" style="margin-top: 40px">
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m15" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/VanshikaBhardwaj.jpg" alt="Vanshika Bhardwaj">
 				<h3>Vanshika Bhardwaj <br />
 					<small>Membership Development Head</small>
@@ -316,9 +411,13 @@
 						<a href="https://twitter.com/Bhardwaj_1C" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
 						<a href="https://www.linkedin.com/in/vanshika-bhardwaj-723547129/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
-				</div> <br />
+				</div> 
 			</div>
+			<br />
+			</div>
+
 			<div class="col-lg-4 col-sm-6 text-center mb-4">
+				<div class="card" data-toggle="modal" data-target="#m16" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/ManjotSingh.jpg" alt="Manjot Singh">
 				<h3>Manjot Singh
 					<small>Membership Development Co-Head</small>
@@ -329,9 +428,12 @@
 						<a href="https://twitter.com/ManjotS81366318?s=09" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
 						<a href="https://www.linkedin.com/in/manjot-singh-09b240157" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
-				</div> <br />				
+				</div>
+				</div>
+				 <br />				
 			</div>
-			<div class="col-lg-4 col-sm-6 text-center mb-4">
+			<div class="col-lg-4 col-sm-6 text-center mb-4" data-toggle="modal" data-target="#m17">
+				<div class="card" data-toggle="modal" data-target="#m17" style="margin-bottom: 20px;">
 				<img class="rounded-circle img-fluid d-block mx-auto" src="images/team/SwaastiJain.jpg" alt="Swaasti Jain">
 				<h3>Swasti Jain <br />
 					<small>Treasurer</small>
@@ -342,11 +444,342 @@
 						<a href="https://twitter.com" target="_blank" class="btn btn-tw"><i class="fab fa-twitter pr-1"></i></a>
 						<a href="https://www.linkedin.com/" target="_blank" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i></a>
 					</p>
-				</div> <br />				
+				</div> 
+			</div>
+			<br/>				
 			</div>
 		</div>
-		<!-- / container -->
+		<!--row-->
+			
 	</div>
+
+		<!-- Mr. Mukesh Sahu Hover -->
+		<div id="m1" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  
+				  <h4 class="modal-title">Mr. Mukesh Sahu</h4>
+				</div>
+				<div class="modal-body">
+				  <!--<p>One fine body&hellip;</p>-->
+				  <img src="images/team/MukeshSahu.png" alt="Mr. Mukesh Sahu" id="card-img-top" style="width:100%">
+
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			  </div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		  </div><!-- /.modal -->
+
+		  <!-- Jasan Preet Singh Hover -->
+		  <div id="m2" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+				
+					  <h4 class="modal-title">Jashan Preet Singh</h4>
+					</div>
+					<div class="modal-body">
+						<img src="images/team/JashanPreetSingh.jpg" alt="Jashan Preet Singh" id="card-img-top" style="width:100%">
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+					</div>
+				  </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			  </div><!-- /.modal -->
+
+		<!-- Abhay Chawla -->
+		  <div id="m3" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+			
+					  <h4 class="modal-title">Abhay Chawla</h4>
+					</div>
+					<div class="modal-body">
+							<img src="images/team/AbhayChawla.jpg" alt="Abhay Chawla" id="card-img-top" style="width:100%">
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+					</div>
+				  </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			  </div><!-- /.modal -->
+
+		  <!-- Jivjyot singh -->
+		  <div id="m4" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+				
+					  <h4 class="modal-title">Jivjyot Singh</h4>
+					</div>
+					<div class="modal-body">
+							<img src="images/team/JivjyotSingh.jpg" alt="Jivjyot Singh" id="card-img-top" style="width:100%">
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+					</div>
+				  </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			  </div><!-- /.modal -->
+
+		  <!-- Sahil Gahlawat hover -->
+		  <div id="m5" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+			
+					  <h4 class="modal-title">Sahil Gahlawat</h4>
+					</div>
+					<div class="modal-body">
+							<img src="images/team/SahilGahlawat.JPG" alt="Sahil Gahlawat" id="card-img-top" style="width:100%">
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+					</div>
+				  </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			  </div><!-- /.modal -->
+
+		  <!-- Reshu Singh Hover -->
+		  <div id="m6" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+				
+					  <h4 class="modal-title">Reshu Singh</h4>
+					</div>
+					<div class="modal-body">
+							<img src="images/team/ReshuSingh.jpg" alt="Reshu Singh" id="card-img-top" style="width:100%">
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+					</div>
+				  </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			  </div><!-- /.modal -->
+
+		  <!-- Amisha Rawat Hover -->
+		  <div id="m7" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+				
+					  <h4 class="modal-title">Amisha Rawat</h4>
+					</div>
+					<div class="modal-body">
+							<img src="images/team/AmishaRawat.jpeg" alt="Amisha Rawat" id="card-img-top" style="width:100%">
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+					</div>
+				  </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			  </div><!-- /.modal -->
+
+		<!-- Priyanshu Hover -->
+		  <div id="m8" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+				
+					  <h4 class="modal-title">Priyanshu</h4>
+					</div>
+					<div class="modal-body">
+							<img src="images/team/PriyanshuSingh.jpg" alt="Priyanshu" id="card-img-top" style="width:100%">
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+					</div>
+				  </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			  </div><!-- /.modal -->
+			
+			<!-- Gaurav Hover -->
+			<div id="m9" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						
+						  <h4 class="modal-title">Gaurav Rawal</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/GauravRawal.jpg" alt="Gaurav Rawal" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+
+			<!-- Vinayak -->
+			<div id="m10" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+					
+						  <h4 class="modal-title">Viayak Tiwari</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/VinayakTiwari.jpg" alt=">Viayak Tiwari" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+
+
+			<!-- Jaskirat kaur -->
+			<div id="m11" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						
+						  <h4 class="modal-title">Jaskirat Kaur Sodhi</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/JaskiratKaur.jpg" alt="Jaskirat Kaur Sodhi" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+
+				  <!-- Maninder -->
+			<div id="m12" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+					
+						  <h4 class="modal-title">Maninder Singh</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/ManinderSingh.jpg" alt="Maninder Singh" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+
+				  
+				  <!-- Tejas Srivastava -->
+			<div id="m13" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						
+						  <h4 class="modal-title">Tejas Srivastava</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/Tejas.jpeg" alt="Tejas Srivastava" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+
+			<!-- Gurprasad singh-->
+			<div id="m14" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						 
+						  <h4 class="modal-title">Gurprasad singh</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/GurprasadSingh.jpg" alt="Gurprasad singh" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						 
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+
+				  
+			<!-- Vanshika Bhardwaj-->
+			<div id="m15" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h4 class="modal-title">Vanshika Bhardwaj</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/VanshikaBhardwaj.jpg" alt="Vanshika Bhardwaj" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						  
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+
+				  				  
+			<!-- Manjot Singh-->
+			<div id="m16" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h4 class="modal-title">Manjot Singh</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/ManjotSingh.jpg" alt="Manjot Singh" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+				  				  				  
+			<!-- Swasti jain-->
+			<div id="m17" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h4 class="modal-title">Swasti jain</h4>
+						</div>
+						<div class="modal-body">
+								<img src="images/team/SwaastiJain.jpg" alt="Swasti jain" id="card-img-top" style="width:100%">
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal" style=".btn btn-default{ float: left;}">Close</button>
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->
+	
+	</section>
+	
+
+
 
 	<footer id="footer">
 		<div class="container">
@@ -414,11 +847,12 @@
 		</form>
 	</div>
 
-	<script>window.jQuery || document.write("<script src='js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+	<script src="style.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/main.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	
 </body>
 </html>
